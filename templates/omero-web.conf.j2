@@ -1,0 +1,20 @@
+
+upstream image_region_backend {
+    server 127.0.0.1:8081 fail_timeout=0 max_fails=0;
+}
+
+{{ nginx_contents['content'] | b64decode | regex_replace('}$', '')  }}
+
+location ~ ^/(webclient|webgateway)/(render_(thumbnail_ngff|image|image_region|image_region_rdef|image_rdef|shape_mask)|get_thumbnails_ngff|histogram_json)/ {
+  proxy_pass http://image_region_backend;
+}
+
+location /omero_ms_image_region/ {
+    gzip on;
+    gzip_min_length 0;
+    gzip_proxied any;
+    gzip_types application/octet-stream;
+    proxy_pass http://image_region_backend;
+}
+
+}

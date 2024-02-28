@@ -1,0 +1,18 @@
+[Unit]
+Description=OMERO image region microservice server
+Requires=redis.service
+After=network.service
+
+[Service]
+USER=omero-server
+UMask=0002
+Type=simple
+WorkingDirectory={{ ms_folder }}/omero-ms-image-region
+ExecStart={{ ms_folder }}/omero-ms-image-region/run.sh
+ExecStop={{ ms_folder }}/omero-ms-image-region/stop.sh
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+

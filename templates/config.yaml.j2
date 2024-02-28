@@ -1,0 +1,86 @@
+# The port that the microservice will listen on
+port: 8081
+# Configuration for request parsing limits
+#  * https://vertx.io/docs/apidocs/io/vertx/core/http/HttpServerOptions.html#setMaxInitialLineLength-int-
+#  * https://vertx.io/docs/apidocs/io/vertx/core/http/HttpServerOptions.html#setMaxHeaderSize-int-
+#  * https://vertx.io/docs/apidocs/io/vertx/core/http/HttpServerOptions.html#setMaxChunkSize-int-
+#  * https://netty.io/4.0/api/io/netty/handler/codec/http/HttpRequestDecoder.html#HttpRequestDecoder--
+# max-initial-line-length: 4096
+# max-header-size: 8192
+# max-chunk-size: 8192
+# Max number of channels to allow per request
+max-active-channels: 10
+# OMERO server that the microservice will communicate with (as a client)
+omero:
+    host: "localhost"
+    port: 4064
+# Copy of the OMERO server configuration which will be reused
+omero.server:
+    omero.data.dir: "{{ omero_data_dir }}"
+    omero.db.host: "{{ databse_url }}"
+    omero.db.name: "{{ db_name | default('omero') }}"
+    omero.db.port: "{{ db_port | default('5432') }}"
+    omero.db.user: "{{ db_user_name | default('omero') }}"
+    omero.db.pass: "{{ db_pass }}"
+    # OMERO_HOME/lib/scripts
+    omero.script_repo_root: "{{ omero_script_repo_root }}"                              
+    omero.pixeldata.max_tile_length: "2048"
+    omero.pixeldata.max_plane_width: "3192"
+    omero.pixeldata.max_plane_height: "3192"
+    # The following should be set to match your OMERO.web settings
+    # See https://docs.openmicroscopy.org/omero/5.6.3/sysadmins/config.html#omero-client-viewer-interpolate-pixels
+    # and https://docs.openmicroscopy.org/omero/5.6.3/sysadmins/config.html#omero-client-viewer-initial-zoom-level
+    omero.client.viewer.initial_zoom_level: "0"
+    omero.client.viewer.interpolate_pixels: "true"
+# OMERO.web configuration
+omero.web:
+   session_cookie_name: "{{ session_id | default('session_id') }}"
+
+
+# Size of the worker pool (defaults to CPUs x 2)
+worker_pool_size: {{ worker_pool_size }}
+#
+# Configuration for zipkin http tracing
+http-tracing:
+    enabled: false
+    zipkin-url: "http://localhost:9411/api/v2/spans"
+
+# Enable JMX Prometheus Metrics
+jmx-metrics:
+    enabled: true
+
+ # Enable Vertx Prometheus Metrics
+vertx-metrics:
+    enabled: true
+
+# Information about the session store.
+session-store:
+    #type is either "postgres" or "redis"
+    type: "redis"
+    #synchronicity is either "sync" or "async"
+    synchronicity: "async"
+    #uri for either postgres db or redis
+    # * https://jdbc.postgresql.org/documentation/80/connect.html
+    # * https://github.com/lettuce-io/lettuce-core/wiki/Redis-URI-and-connection-details
+    # uri: "jdbc:postgresql://localhost:5432/omero_database?user=omero&password=omero"
+    # For Redis in protected mode
+    uri: "redis://:@localhost:6379/0"
+    # For Redis in non-protected mode
+    # uri: "redis://:password@localhost:6379/0"
+
+redis-cache:
+    #uri: "redis://cf33da71-d81f-42e3-9932-71c82d52de32@localhost:6379/1"
+
+# In memory readability cache keyed off of OMERO session key and Image ID.
+# Enabling will speed up permissions lookups for a given OMERO session and Image
+# combination at the cost of a possibly elongated permissions window.  This
+# elongated permissions window is in effect for the time to live when the user
+# the session belongs to is removed from the group the Image belongs to.
+can-read-cache:
+    # Time (in seconds) for a cache entry to live until the lookup is performed
+    # against the server again.  0 disables the cache entirely.
+    time-to-live: 600
+    maximum-size: 10000
+
+# The string to be used as the Cache-Control header provided in responses
+cache-control-header: "private, max-age=3600"
