@@ -1,0 +1,107 @@
+---
+# tasks for omero_ms_image_region
+
+- name: omero-ms-image-region | create ms folder
+  become: true
+  ansible.builtin.file:
+    path: "{{ ms_folder }}"
+    state: directory
+    mode: 0755
+
+- name: chown to ms-user
+  become_method: sudo
+  become: true
+  ansible.builtin.file:
+    path: "{{ ms_folder }}"
+    owner: "{{ ms_user }}"
+    group: "{{ ms_user }}"
+    state: directory
+    mode: 0755
+
+- name: omero-ms-image-region | download omero-ms-image-region
+  become: true
+  become_user: "{{ ms_user }}"
+  ansible.builtin.get_url:
+    url: "{{ download_URL }}"
+    dest: "{{ ms_folder }}/omero-ms-image-region.tar"
+    force_basic_auth: yes
+    mode: 0755
+
+- name: omero-ms-image-region | Extract tar file
+  become: true
+  become_user: "{{ ms_user }}"
+  ansible.builtin.unarchive:
+    src: "{{ ms_folder }}/omero-ms-image-region.tar"
+    dest: "{{ ms_folder }}"
+    remote_src: yes
+
+
+- name: omero-ms-image-region | create a symbolic link
+  become: true
+  become_user: "{{ ms_user }}"
+  ansible.builtin.file:
+    src: "{{ ms_folder }}/{{ ms_name.split('.tar') | first }}"
+    dest: "{{ ms_folder }}/omero-ms-image-region"
+    owner: "{{ ms_user }}"
+    group: "{{ ms_user }}"
+    state: link
+
+
+- name: omero-ms-image-region | copy config file
+  become: true
+  become_user: "{{ ms_user }}"
+  ansible.builtin.template:
+    dest: "{{ ms_folder }}/omero-ms-image-region/conf/config.yaml"
+    src: config.yaml.j2
+
+- name: omero-ms-image-region | copy log config file
+  become: true
+  become_user: "{{ ms_user }}"
+  ansible.builtin.template:
+    dest: "{{ ms_folder }}/omero-ms-image-region/conf/logback.xml"
+    src: logback.xml.j2
+
+
+- name: omero-ms-image-region | copy run.sh
+  become: true
+  become_user: "{{ ms_user }}"
+  ansible.builtin.template:
+    dest: "{{ ms_folder }}/omero-ms-image-region/run.sh"
+    src: run.sh.j2
+    mode: +x
+
+- name: omero-ms-image-region | copy stop.sh
+  become: true
+  become_user: "{{ ms_user }}"
+  ansible.builtin.template:
+    dest: "{{ ms_folder }}/omero-ms-image-region/stop.sh"
+    src: stop.sh.j2
+    mode: +x
+
+- name: omero-ms-image-region | systemd service
+  become: true
+  ansible.builtin.template:
+    dest: /etc/systemd/system/omero-ms-image-region.service
+    src: omero-ms-image-region.service.j2
+    mode: 0644
+  notify:
+    - enable omero-ms-image-region service
+    - restart omero-ms-image-region service
+
+- name: get the omero-web.conf contents
+  become: true
+  ansible.builtin.slurp:
+    src: /etc/nginx/conf.d/omero-web.conf
+  register: nginx_contents
+  when: update_nginx
+
+- name: omero-ms-image-region | copy omero-web config file
+  become: yes
+  ansible.builtin.template:
+    force: true
+    dest: /etc/nginx/conf.d/omero-web.conf
+    src: omero-web.conf.j2
+    mode: 0644
+  notify:
+    - restart nginx service
+  when: update_nginx

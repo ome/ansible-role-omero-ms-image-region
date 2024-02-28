@@ -1,0 +1,48 @@
+---
+# defaults for omero_ms_image_region
+
+# Microservice user, the defaults is omero-server
+ms_user: "omero-server"
+
+# Microservice installation folder
+ms_folder: "/opt/omero/microservice"
+
+# Omero Database URL
+databse_url: "127.0.0.1"
+
+# Omero database server port
+db_port: "5432"
+
+# Omero database name
+db_name: "omero"
+
+# Omero database user name
+db_user_name: "omero"
+
+# Omero database user password
+db_pass: "omero"
+
+# Log level, it can be info, debug or error
+log_evel: "debug"
+
+# Omero data folder
+omero_data_dir: "/OMERO"
+
+# Omero scripts folder
+omero_script_repo_root: "/opt/omero/server/OMERO.server/lib/scripts/"
+
+# No of Microservice workers, the default is double the number of processors which the machine has
+worker_pool_size: "10"
+
+# Omero Session id, if you do not know it, you may get it using this command:
+# /opt/omero/web/OMERO.web/bin/omero config get omero.web.session_cookie_name
+session_id: "sessionid"
+
+# This role variable controls updating the nginx config file, omero-web.conf
+# if false, it will not update the file
+update_nginx: false
+
+# Microservice download URL, you should updated with version which is compatable with your omero-server
+# The bio-format version for both the microservice and Omero-Server should be the same
+# Also, in case of using ngff data, the version of OMEZarrReader should be the same for both of Microsevice and Omero-Server
+download_URL: "https://github.com/khaledk2/ice-archh-64/releases/download/new_tag/omero-ms-image-region-0.8.7.tar"

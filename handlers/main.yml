@@ -1,0 +1,20 @@
+---
+
+- name: enable omero-ms-image-region service
+  become: true
+  ansible.builtin.service:
+    name: omero-ms-image-region.service
+    enabled: true
+
+- name: restart omero-ms-image-region service
+  become: true
+  ansible.builtin.service:
+    state: started
+    daemon_reload: true
+    name: omero-ms-image-region.service
+
+- name: restart nginx service
+  become: true
+  ansible.builtin.service:
+    state: restarted
+    name: nginx
