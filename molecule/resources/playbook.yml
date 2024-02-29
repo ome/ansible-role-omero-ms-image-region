@@ -4,6 +4,7 @@
   hosts: all
 
   roles:
+    - name: ome.redis
     - name: ome.postgresql
       postgresql_version: "15"
       postgresql_databases:
