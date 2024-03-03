@@ -1,5 +1,4 @@
 ---
-
 - src: ome.omero_server
 - src: ome.postgresql
 - src: ome.omero_web

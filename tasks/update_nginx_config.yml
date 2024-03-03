@@ -1,0 +1,22 @@
+- 
+
+- name: get the omero-web.conf contents
+  become: true
+  ansible.builtin.slurp:
+    src: /etc/nginx/conf.d/omero-web.conf
+  register: nginx_contents
+
+
+- name: display file contents
+  debug:
+    var: nginx_contents['content'] | b64decode | regex_replace('}$', '')
+
+- name: omero-ms-image-region | copy omero-web config file
+  become: yes
+  ansible.builtin.template:
+    dest: /etc/nginx/conf.d/omero-web.conf
+    src: omero-web.conf.j2
+    mode: 0644    
+  notify:
+    - restart nginx service
+  when: not nginx_contents['content'] | b64decode  is search("server 127.0.0.1:8081")

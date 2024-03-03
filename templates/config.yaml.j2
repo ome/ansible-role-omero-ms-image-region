@@ -18,9 +18,9 @@ omero:
 omero.server:
     omero.data.dir: "{{ omero_data_dir }}"
     omero.db.host: "{{ databse_url }}"
-    omero.db.name: "{{ db_name | default('omero') }}"
-    omero.db.port: "{{ db_port | default('5432') }}"
-    omero.db.user: "{{ db_user_name | default('omero') }}"
+    omero.db.name: "{{ db_name }}"
+    omero.db.port: "{{ db_port }}"
+    omero.db.user: "{{ db_user_name }}"
     omero.db.pass: "{{ db_pass }}"
     # OMERO_HOME/lib/scripts
     omero.script_repo_root: "{{ omero_script_repo_root }}"                              
@@ -34,7 +34,7 @@ omero.server:
     omero.client.viewer.interpolate_pixels: "true"
 # OMERO.web configuration
 omero.web:
-   session_cookie_name: "{{ session_id | default('session_id') }}"
+   session_cookie_name: "{{ session_id }}"
 
 
 # Size of the worker pool (defaults to CPUs x 2)
@@ -49,7 +49,7 @@ http-tracing:
 jmx-metrics:
     enabled: true
 
- # Enable Vertx Prometheus Metrics
+# Enable Vertx Prometheus Metrics
 vertx-metrics:
     enabled: true
 
