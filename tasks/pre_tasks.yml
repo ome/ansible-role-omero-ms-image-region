@@ -16,7 +16,7 @@
     deploy_archive_sha256: "{{ omero_ms_sha256 }}"
     deploy_archive_symlink: "{{ ms_folder }}/omero-ms-image-region"
     deploy_archive_internal_root: >-
-      omero-ms-image-region-0.8.7git add 
+      omero-ms-image-region-0.8.7 
 
 - name: omero-ms-image-region | chown to ms-user
   become: true
