@@ -86,6 +86,7 @@
     state: present
   notify:
     - restart omero-ms-image-region service
+  when: ansible_facts.selinux.status == 'enabled'
 
 - import_tasks: update_nginx_config.yml
   when: update_nginx
