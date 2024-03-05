@@ -5,8 +5,6 @@ OMERO MS Image Region
 [![Ansible Role](https://img.shields.io/badge/ansible--galaxy-omero_ms_image_region-blue.svg)](https://galaxy.ansible.com/ui/standalone/roles/ome/omero_server/)
 
 Installs and configures OMERO ms image region
-https://github.com/ome/omero-ms-image-region
-https://github.com/glencoesoftware/omero-ms-image-region?tab=readme-ov-file
 
 Dependencies
 ------------
