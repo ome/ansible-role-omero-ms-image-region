@@ -77,6 +77,15 @@
     - enable omero-ms-image-region service
     - restart omero-ms-image-region service
 
+- name: omero-ms-image-region | selinux http_port_t for ms port
+  become: true
+  ansible.builtin.seport:
+    ports: "{{ ms_port }}"
+    proto: tcp
+    setype: http_port_t
+    state: present
+  notify:
+    - restart omero-ms-image-region service
 
 - import_tasks: update_nginx_config.yml
   when: update_nginx

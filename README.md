@@ -20,6 +20,7 @@ Role Variables
 - ms_user: 'omero-server': icroservice user, the defaults is omero-server
 ms_user: 'omero-server'
 - ms_folder: Microservice installation folder
+- ms_port: Microservice port 
 - databse_url: Omero Database URL
 - db_port:  Omero database server port
 - db_name: Omero database name

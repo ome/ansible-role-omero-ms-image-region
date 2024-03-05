@@ -7,6 +7,9 @@ ms_user: 'omero-server'
 # Microservice installation folder
 ms_folder: '/opt/omero/microservice'
 
+# Microservice port
+ms_port: '8081'
+
 # Omero Database URL
 databse_url: '127.0.0.1'
 
