@@ -2,7 +2,8 @@
 # tasks for omero_ms_image_region
 
 
-- name: Check that the somefile.conf exists
+- name: Check that the ms conf exists
+  become: true
   ansible.builtin.stat:
      path: "{{ ms_folder }}/{{ ms_name }}"
   register: stat_result
@@ -12,6 +13,7 @@
     var: stat_result.stat.exists
 
 - name: Use sha256 to calculate the checksum
+  become: true
   ansible.builtin.stat:
     path: "{{ ms_folder }}/{{ ms_name }}"
     checksum_algorithm: sha256
@@ -26,23 +28,12 @@
    - stat_ssh256.stat.checksum is undefined or  omero_ms_sha256 !=  stat_ssh256.stat.checksum
    - not stat_result.stat.exists
 
-
-#- name: omero-ms-image-region | clean config file (delete file)
-#  ansible.builtin.file:
-#    path: "{{ ms_folder }}/omero-ms-image-region/conf/config.yaml"
-#    state: absent
-
 - name: omero-ms-image-region | copy config file
   become: true
   become_user: "{{ ms_user }}"
   ansible.builtin.template:
     dest: "{{ ms_folder }}/omero-ms-image-region/conf/config.yaml"
     src: config.yaml.j2
-
-#- name: omero-ms-image-region | clean log file (delete file)
-#  ansible.builtin.file:
-#    path: "{{ ms_folder }}/omero-ms-image-region/conf/logback.xml"
-#    state: absent
 
 - name: omero-ms-image-region | copy log config file
   become: true
