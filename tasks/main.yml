@@ -27,6 +27,19 @@
    - stat_ssh256.stat.checksum is undefined or omero_ms_image_region_ms_sha256 !=  stat_ssh256.stat.checksum
    - not stat_result.stat.exists
 
+- name: omero-ms-image-region | set redis url in protected mode
+  ansible.builtin.set_fact:
+    omero_ms_image_region_ms_redis_uri:
+      "redis://:@'{{ omero_ms_image_region_ms_redis_url }}':omero_ms_image_region_ms_redis_port/0"
+  when: omero_ms_image_region_ms_redis_username and omero_ms_image_region_ms_redis_user_pass
+
+- name: omero-ms-image-region | set redis uri in not protected mode
+  ansible.builtin.set_fact:
+    omero_ms_image_region_ms_redis_uri:
+      "redis://'{{ omero_ms_image_region_ms_redis_username }}':'{{ omero_ms_image_region_ms_redis_user_pass }}'@'{{ omero_ms_image_region_ms_redis_url }}':omero_ms_image_region_ms_redis_port/0"
+  when: not omero_ms_image_region_ms_redis_username and not omero_ms_image_region_ms_redis_user_pass
+
+
 - name: omero-ms-image-region | copy config file
   become: true
   become_user: "{{ omero_ms_image_region_user }}"

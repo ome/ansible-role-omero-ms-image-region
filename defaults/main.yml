@@ -53,3 +53,8 @@ omero_ms_image_region_download_URL: 'https://github.com/khaledk2/ice-archh-64/re
 omero_ms_image_region_ms_sha256: f984bb78fa81d4fa603387df919d383485944a15a6a762f5c136cf35aefafeaa
  
 omero_ms_image_region_ms_name: "{{ omero_ms_image_region_download_URL | basename }}"
+
+omero_ms_image_region_ms_redis_url: 'localhost'
+omero_ms_image_region_ms_redis_port: '6379'
+omero_ms_image_region_ms_redis_username: ''
+omero_ms_image_region_ms_redis_user_pass: ''
