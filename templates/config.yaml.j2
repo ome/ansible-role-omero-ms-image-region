@@ -1,5 +1,5 @@
 # The port that the microservice will listen on
-port: {{ ms_port }}
+port: {{ omero_ms_image_region_port }}
 # Configuration for request parsing limits
 #  * https://vertx.io/docs/apidocs/io/vertx/core/http/HttpServerOptions.html#setMaxInitialLineLength-int-
 #  * https://vertx.io/docs/apidocs/io/vertx/core/http/HttpServerOptions.html#setMaxHeaderSize-int-
@@ -17,11 +17,11 @@ omero:
 # Copy of the OMERO server configuration which will be reused
 omero.server:
     omero.data.dir: "{{ omero_data_dir }}"
-    omero.db.host: "{{ databse_url }}"
-    omero.db.name: "{{ db_name }}"
-    omero.db.port: "{{ db_port }}"
-    omero.db.user: "{{ db_user_name }}"
-    omero.db.pass: "{{ db_pass }}"
+    omero.db.host: "{{ omero_ms_image_region_db_url }}"
+    omero.db.name: "{{ omero_ms_image_region_db_name }}"
+    omero.db.port: "{{ omero_ms_image_region_db_port }}"
+    omero.db.user: "{{ omero_ms_image_region_db_username }}"
+    omero.db.pass: "{{ omero_ms_image_region_db_pass }}"
     # OMERO_HOME/lib/scripts
     omero.script_repo_root: "{{ omero_script_repo_root }}"                              
     omero.pixeldata.max_tile_length: "2048"
@@ -38,7 +38,7 @@ omero.web:
 
 
 # Size of the worker pool (defaults to CPUs x 2)
-worker_pool_size: {{ worker_pool_size }}
+omero_ms_image_region_ms_worker_pool_size: {{ omero_ms_image_region_ms_worker_pool_size }}
 #
 # Configuration for zipkin http tracing
 http-tracing:
