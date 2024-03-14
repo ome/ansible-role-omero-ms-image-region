@@ -34,11 +34,11 @@ omero.server:
     omero.client.viewer.interpolate_pixels: "true"
 # OMERO.web configuration
 omero.web:
-   session_cookie_name: "{{ session_id }}"
+   session_cookie_name: "{{ omero_ms_image_region_session_id }}"
 
 
 # Size of the worker pool (defaults to CPUs x 2)
-worker_pool_size: {{ worker_pool_size }}
+worker_pool_size: {{ omero_ms_image_region_ms_worker_pool_size }}
 #
 # Configuration for zipkin http tracing
 http-tracing:
