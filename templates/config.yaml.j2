@@ -18,10 +18,10 @@ omero:
 omero.server:
     omero.data.dir: "{{ omero_data_dir }}"
     omero.db.host: "{{ omero_ms_image_region_db_url }}"
-    omero.db.name: "{{ db_name }}"
-    omero.db.port: "{{ db_port }}"
-    omero.db.user: "{{ db_user_name }}"
-    omero.db.pass: "{{ db_pass }}"
+    omero.db.name: "{{ omero_ms_image_region_db_name }}"
+    omero.db.port: "{{ omero_ms_image_region_db_port }}"
+    omero.db.user: "{{ omero_ms_image_region_db_username }}"
+    omero.db.pass: "{{ omero_ms_image_region_db_pass }}"
     # OMERO_HOME/lib/scripts
     omero.script_repo_root: "{{ omero_script_repo_root }}"                              
     omero.pixeldata.max_tile_length: "2048"
