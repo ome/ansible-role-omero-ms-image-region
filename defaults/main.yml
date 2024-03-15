@@ -56,5 +56,4 @@ omero_ms_image_region_ms_name: "{{ omero_ms_image_region_download_URL | basename
 
 omero_ms_image_region_ms_redis_url: 'localhost'
 omero_ms_image_region_ms_redis_port: '6379'
-omero_ms_image_region_ms_redis_username: ''
-omero_ms_image_region_ms_redis_user_pass: ''
+omero_ms_image_region_ms_redis_pass: ''
