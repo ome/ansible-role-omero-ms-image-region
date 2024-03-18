@@ -7,20 +7,12 @@
      path: "{{ omero_ms_image_region_folder }}/{{ omero_ms_image_region_ms_name }}"
   register: stat_result
 
-- name: display stats
-  debug:
-    var: stat_result.stat.exists
-
 - name: Use sha256 to calculate the checksum
   become: true
   ansible.builtin.stat:
     path: "{{ omero_ms_image_region_folder }}/{{ omero_ms_image_region_ms_name }}"
     checksum_algorithm: sha256
   register: stat_ssh256
-
-- name: display stats
-  debug:
-    var: stat_ssh256.stat.checksum
 
 - import_tasks: pre_tasks.yml
   when:
