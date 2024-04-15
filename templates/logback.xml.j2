@@ -18,11 +18,11 @@
     </encoder>
   </appender>
 
-  <logger name="com.glencoesoftware.omero.ms" level="{{ log_evel }}"/>
+  <logger name="com.glencoesoftware.omero.ms" level="{{ omero_ms_image_region_log_level }}"/>
   <logger name="loci" level="debug"/><!-- Bio-Formats -->
-  <logger name="loci.formats.Memoizer" level="{{ log_evel }}"/><!-- Bio-Formats memoizer -->
+  <logger name="loci.formats.Memoizer" level="{{ omero_ms_image_region_log_level }}"/><!-- Bio-Formats memoizer -->
 
-  <root level="{{ log_evel }}">
+  <root level="{{ omero_ms_image_region_log_level }}">
     <appender-ref ref="FILE" />
   </root>
 </configuration>

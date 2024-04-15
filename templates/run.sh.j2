@@ -1,2 +1,2 @@
 #! /bin/bash
-sudo -u {{ ms_user }} JAVA_OPTS="-Dlogback.configurationFile=conf/logback.xml" bash bin/omero-ms-image-region
+sudo -u {{ omero_ms_image_region_user }} JAVA_OPTS="-Dlogback.configurationFile=conf/logback.xml" bash bin/omero-ms-image-region

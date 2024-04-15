@@ -1,6 +1,6 @@
 
 upstream image_region_backend {
-    server 127.0.0.1:8081 fail_timeout=0 max_fails=0;
+    server 127.0.0.1:{{ omero_ms_image_region_port }} fail_timeout=0 max_fails=0;
 }
 
 {{ nginx_contents['content'] | b64decode | regex_replace('}$', '')  }}

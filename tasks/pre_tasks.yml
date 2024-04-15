@@ -3,7 +3,7 @@
 - name: omero-ms-image-region | create ms folder
   become: true
   ansible.builtin.file:
-    path: "{{ ms_folder }}"
+    path: "{{ omero_ms_image_region_folder }}"
     state: directory
     mode: 0755
 
@@ -11,19 +11,19 @@
   include_role:
       name: ome.deploy_archive
   vars:
-    deploy_archive_dest_dir: "{{ ms_folder }}"
-    deploy_archive_src_url: "{{ download_URL }}"
-    deploy_archive_sha256: "{{ omero_ms_sha256 }}"
-    deploy_archive_symlink: "{{ ms_folder }}/omero-ms-image-region"
+    deploy_archive_dest_dir: "{{ omero_ms_image_region_folder }}"
+    deploy_archive_src_url: "{{ omero_ms_image_region_download_URL }}"
+    deploy_archive_sha256: "{{ omero_ms_image_region_ms_sha256 }}"
+    deploy_archive_symlink: "{{ omero_ms_image_region_folder }}/omero-ms-image-region"
     deploy_archive_internal_root: >-
       omero-ms-image-region-0.8.7
 
 - name: omero-ms-image-region | chown to ms-user
   become: true
   ansible.builtin.file:
-    path: "{{ ms_folder }}"
-    owner: "{{ ms_user }}"
-    group: "{{ ms_user }}"
+    path: "{{ omero_ms_image_region_folder }}"
+    owner: "{{ omero_ms_image_region_user }}"
+    group: "{{ omero_ms_image_region_user }}"
     state: directory
     recurse: true
     mode: 0755
