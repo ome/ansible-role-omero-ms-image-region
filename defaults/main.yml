@@ -26,7 +26,7 @@ omero_ms_image_region_db_username: 'omero'
 omero_ms_image_region_db_pass: 'omero'
 
 # Log level, it can be info, debug or error
-omero_ms_image_region_log_level: 'debug'
+omero_ms_image_region_log_level: 'info'
 
 # Omero data folder
 omero_data_dir: '/OMERO'
