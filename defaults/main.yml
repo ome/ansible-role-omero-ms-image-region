@@ -45,13 +45,13 @@ omero_ms_image_region_session_id: 'sessionid'
 # if false, it will not update the file
 omero_ms_image_region_update_nginx: false
 
-# Microservice download URL, you should updated with version which is compatable with your omero-server
-# The bio-format version for both the microservice and Omero-Server should be the same
-# Also, in case of using ngff data, the version of OMEZarrReader should be the same for both of Microsevice and Omero-Server
+# Microservice download URL, the user should update it with a version which is compatible with the installed omero-server, i.e.:
+## The bio-format version for both the microservice and Omero-Server should be the same
+## Also, in case of using ngff data, the version of OMEZarrReader should be the same for both of the Microsevice and the Omero-Server.
 omero_ms_image_region_download_URL: 'https://github.com/khaledk2/ice-archh-64/releases/download/new_tag/omero-ms-image-region-0.8.7.zip'
 
 omero_ms_image_region_ms_sha256: 9da1606fb1141b1044e0544451c92305710bca4c378febf003214b920ff510d2
- 
+
 omero_ms_image_region_ms_name: "{{ omero_ms_image_region_download_URL | basename }}"
 
 omero_ms_image_region_ms_redis_url: 'localhost'

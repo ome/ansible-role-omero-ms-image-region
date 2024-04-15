@@ -16,7 +16,7 @@ Role Variables
 --------------
 
 - omero_ms_image_region_user: 'omero-server': icroservice user, the defaults is omero-server
-omero_ms_image_region_user: 'omero-server'
+- omero_ms_image_region_user: 'omero-server'
 - omero_ms_image_region_folder: Microservice installation folder
 - omero_ms_image_region_port: Microservice port 
 - omero_ms_image_region_db_url: Omero Database URL
@@ -34,6 +34,14 @@ omero_ms_image_region_user: 'omero-server'
     /opt/omero/web/OMERO.web/bin/omero config get omero.web.session_cookie_name
 
 - omero_ms_image_region_update_nginx: if false, it will not update the nginx config file
+
+- omero_ms_image_region_download_URL: The download URl for the distibuted ms build (zip file)
+- omero_ms_image_region_ms_sha256: The sha256 for the  for the distibuted ms build
+
+The ms build should be compatible with the installed omero-server, i.e.:
+- The bio-format version for both the microservice and Omero-Server should be the same
+- Also, in case of using ngff data, the version of OMEZarrReader should be the same for both of the Microsevice and the Omero-Server.
+
 
 Example Playbook
 ----------------
