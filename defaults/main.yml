@@ -55,4 +55,4 @@ omero_ms_image_region_name: "{{ omero_ms_image_region_download_URL | basename }}
 omero_ms_image_region_redis_url: 'localhost'
 omero_ms_image_region_redis_port: '6379'
 omero_ms_image_region_redis_pass: ''
-omero_ms_image_region_max-active-channels: '10'
+omero_ms_image_region_max_active_channels: '10'

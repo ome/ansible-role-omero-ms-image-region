@@ -28,7 +28,7 @@ Role Variables
 - omero_script_repo_root: Omero scripts folder
 - omero_ms_image_region_worker_pool_size: No of Microservice workers, the default is double the number of processors which the machine has
 - session_id: Omero Session id, if you do not know it, you may get it using this command:
-- omero_ms_image_region_max-active-channels: Max number of channels to allow per request default is 10
+- omero_ms_image_region_max_active_channels: Max number of channels to allow per request default is 10
 
     /opt/omero/web/OMERO.web/bin/omero config get omero.web.session_cookie_name
 
