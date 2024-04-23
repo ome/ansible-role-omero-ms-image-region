@@ -26,16 +26,16 @@ Role Variables
 - omero_ms_image_region_log_level: Logging level, allowed values: ``info``, ``debug``,  ``error``
 - omero_data_dir: OMERO data folder
 - omero_script_repo_root: Omero scripts folder
-- omero_ms_image_region_ms_worker_pool_size: No of Microservice workers, the default is double the number of processors which the machine has
+- omero_ms_image_region_worker_pool_size: No of Microservice workers, the default is double the number of processors which the machine has
 - session_id: Omero Session id, if you do not know it, you may get it using this command:
-
+- omero_ms_image_region_max-active-channels: Max number of channels to allow per request default is 10
 
     /opt/omero/web/OMERO.web/bin/omero config get omero.web.session_cookie_name
 
 - omero_ms_image_region_update_nginx: if false, it will not update the nginx config file
 
 - omero_ms_image_region_download_URL: The download URl for the distibuted ms build (zip file)
-- omero_ms_image_region_ms_sha256: The sha256 for the distibuted ms build
+- omero_ms_image_region_package_sha256: The sha256 for the distibuted ms build
 
 The ms build should be compatible with the installed omero-server, i.e.:
 - The bio-format version for the Microservice should match the Bio-Formats version of the Omero-Server

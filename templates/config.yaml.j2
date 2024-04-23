@@ -9,7 +9,7 @@ port: {{ omero_ms_image_region_port }}
 # max-header-size: 8192
 # max-chunk-size: 8192
 # Max number of channels to allow per request
-max-active-channels: 10
+max-active-channels: "{{ omero_ms_image_region_max-active-channels }}"
 # OMERO server that the microservice will communicate with (as a client)
 omero:
     host: "localhost"
@@ -38,7 +38,7 @@ omero.web:
 
 
 # Size of the worker pool (defaults to CPUs x 2)
-worker_pool_size: {{ omero_ms_image_region_ms_worker_pool_size }}
+worker_pool_size: {{ omero_ms_image_region_worker_pool_size }}
 #
 # Configuration for zipkin http tracing
 http-tracing:

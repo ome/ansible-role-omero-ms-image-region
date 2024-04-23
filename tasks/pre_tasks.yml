@@ -13,7 +13,7 @@
   vars:
     deploy_archive_dest_dir: "{{ omero_ms_image_region_folder }}"
     deploy_archive_src_url: "{{ omero_ms_image_region_download_URL }}"
-    deploy_archive_sha256: "{{ omero_ms_image_region_ms_sha256 }}"
+    deploy_archive_sha256: "{{ omero_ms_image_region_package_sha256 }}"
     deploy_archive_symlink: "{{ omero_ms_image_region_folder }}/omero-ms-image-region"
     deploy_archive_internal_root: >-
       omero-ms-image-region-0.8.7

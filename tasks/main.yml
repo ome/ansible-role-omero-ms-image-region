@@ -4,32 +4,32 @@
 - name: Check that the ms conf exists
   become: true
   ansible.builtin.stat:
-     path: "{{ omero_ms_image_region_folder }}/{{ omero_ms_image_region_ms_name }}"
+     path: "{{ omero_ms_image_region_folder }}/{{ omero_ms_image_region_name }}"
   register: stat_result
 
 - name: Use sha256 to calculate the checksum
   become: true
   ansible.builtin.stat:
-    path: "{{ omero_ms_image_region_folder }}/{{ omero_ms_image_region_ms_name }}"
+    path: "{{ omero_ms_image_region_folder }}/{{ omero_ms_image_region_name }}"
     checksum_algorithm: sha256
   register: stat_ssh256
 
 - import_tasks: pre_tasks.yml
   when:
-   - stat_ssh256.stat.checksum is undefined or omero_ms_image_region_ms_sha256 !=  stat_ssh256.stat.checksum
+   - stat_ssh256.stat.checksum is undefined or omero_ms_image_region_package_sha256 !=  stat_ssh256.stat.checksum
    - not stat_result.stat.exists
 
 - name: omero-ms-image-region | set redis uri in protected mode
   ansible.builtin.set_fact:
     omero_ms_image_region_ms_redis_uri:
-      "redis://:@{{ omero_ms_image_region_ms_redis_url }}:{{ omero_ms_image_region_ms_redis_port }}/0"
-  when: not omero_ms_image_region_ms_redis_pass
+      "redis://:@{{ omero_ms_image_region_redis_url }}:{{ omero_ms_image_region_redis_port }}/0"
+  when: not omero_ms_image_region_redis_pass
 
 - name: omero-ms-image-region | set redis uri in not protected mode
   ansible.builtin.set_fact:
     omero_ms_image_region_ms_redis_uri:
-      "redis://:{{ omero_ms_image_region_ms_redis_pass }}@{{ omero_ms_image_region_ms_redis_url }}:{{ omero_ms_image_region_ms_redis_port }}/0"
-  when: omero_ms_image_region_ms_redis_pass
+      "redis://:{{ omero_ms_image_region_redis_pass }}@{{ omero_ms_image_region_redis_url }}:{{ omero_ms_image_region_redis_port }}/0"
+  when: omero_ms_image_region_redis_pass
 
 - name: omero-ms-image-region | copy config file
   become: true
