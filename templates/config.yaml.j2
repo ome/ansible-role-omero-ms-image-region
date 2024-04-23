@@ -9,7 +9,7 @@ port: {{ omero_ms_image_region_port }}
 # max-header-size: 8192
 # max-chunk-size: 8192
 # Max number of channels to allow per request
-max-active-channels: "{{ omero_ms_image_region_max_active_channels }}"
+max-active-channels: 10
 # OMERO server that the microservice will communicate with (as a client)
 omero:
     host: "localhost"
