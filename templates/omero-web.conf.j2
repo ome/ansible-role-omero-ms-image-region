@@ -1,16 +1,14 @@
 
 upstream image_region_backend {
-    server 127.0.0.1:{{ omero_ms_image_region_port }} fail_timeout=0 max_fails=0;
-}
-
-proxy_cache_path /tmp/cache levels=1:2 keys_zone=ms_cache:10m max_size=25m inactive=120m use_temp_path=off;
+    server 127.0.0.1:{{ omero_ms_image_region_port }} git push
+proxy_cache_path /tmp/cache levels=1:2 keys_zone=ms_cache:10m max_size={{ nginx_cache_max_size }} inactive={{ nginx_cache_inactive_time }} use_temp_path=off;
 
 {{ nginx_contents['content'] | b64decode | regex_replace('}$', '')  }}
 
 location ~ ^/(webclient|webgateway)/(render_(thumbnail_ngff|image|image_region|image_region_rdef|image_rdef|shape_mask)|get_thumbnails_ngff|histogram_json)/ {
   proxy_cache_key "$scheme$request_method$host$request_uri";
   proxy_cache ms_cache;
-  proxy_cache_valid 200 302 60m;
+  proxy_cache_valid 200 302 {{ nginx_cache_expiration_time }};
   proxy_ignore_headers X-Accel-Expires;
   proxy_ignore_headers Cache-Control;
   proxy_pass http://image_region_backend;
