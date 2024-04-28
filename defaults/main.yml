@@ -1,7 +1,7 @@
 ---
 # defaults for omero_ms_image_region
 
-# Microservice user, the defaults is omero-server
+# Microservice user, the defaults is OMERO.server
 omero_ms_image_region_user: 'omero-server'
 
 # Microservice installation folder
@@ -10,7 +10,7 @@ omero_ms_image_region_folder: '/opt/omero/microservice'
 # Microservice port
 omero_ms_image_region_port: '8081'
 
-# OMERO Database URL
+# OMERO database URL
 omero_ms_image_region_db_url: '127.0.0.1'
 
 # OMERO database server port
@@ -34,7 +34,7 @@ omero_data_dir: '/OMERO'
 # OMERO scripts folder
 omero_script_repo_root: '/opt/omero/server/OMERO.server/lib/scripts/'
 
-# No of the Microservice workers, the default is double the number of processors which the machine has
+# No. of the Microservice workers, the default is double the number of processors which the machine has
 omero_ms_image_region_worker_pool_size: '10'
 
 # OMERO Session id, if you do not know it, you may get it using this command:
