@@ -15,7 +15,7 @@ OMERO.server and OMERO.web are required.
 Role Variables
 --------------
 
-- omero_ms_image_region_user: Microservice user, the defaults is 'omero-server'
+- omero_ms_image_region_user: Microservice user, the default is 'omero-server'
 - omero_ms_image_region_folder: Microservice installation folder
 - omero_ms_image_region_port: Microservice port 
 - omero_ms_image_region_db_url: OMERO database URL
@@ -34,12 +34,12 @@ Role Variables
 
 - omero_ms_image_region_update_nginx: if false, it will not update the nginx config file
 
-- omero_ms_image_region_download_URL: The download URl for the distibuted ms build (zip file)
-- omero_ms_image_region_package_sha256: The sha256 for the distibuted ms build
+- omero_ms_image_region_download_URL: The download URL for the distributed ms build (zip file)
+- omero_ms_image_region_package_sha256: The sha256 for the distributed ms build
 
 The ms build should be compatible with the installed OMERO.server, i.e.:
 - The bio-format version for the Microservice should match the Bio-Formats version of the OMERO.server
-- Also, in case of using ngff data, the version of OMEZarrReader should be the same for both of the Microsevice and the OMERO.server.
+- Also, in the case of using ngff data, the version of OMEZarrReader should be the same for both the Microsevice and the OMERO.server.
 
 Example Playbook
 ----------------
