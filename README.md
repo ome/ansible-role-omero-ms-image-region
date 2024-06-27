@@ -48,3 +48,24 @@ Example Playbook
       roles:
         - role: ome.omero_ms_image_region
           omero_ms_image_region_update_nginx: true
+
+Another example:
+----------------
+The following example is used to deploy in multiple nodes and configure the ms download url and other roles variables 
+
+    - hosts: nodes
+      become: true
+    
+      roles:
+        - role: ome.omero_ms_image_region
+          omero_ms_image_region_update_nginx: true
+          omero_ms_image_region_db_url: databse_url
+          omero_ms_image_region_db_name: database_name
+          omero_ms_image_region_db_username: database_username
+          omero_ms_image_region_db_pass: database_password
+          omero_data_dir: /data/OMERO
+          omero_ms_image_region_session_id: sessionid
+          # URL for the Latest build which support bio-format 7.3 and and latest zar reader (i.e. 0.5.1)  
+          omero_ms_image_region_download_URL: 'https://github.com/khaledk2/ice-archh-64/releases/download/New_M/omero-ms-image-region-0.8.7.zip' 
+          # sha256 for the Latest build
+          omero_ms_image_region_package_sha256: 2ce62fb6c5ff3f75bcc72d7a068d2c0b3667eb8787989f86eba045f958bab780
