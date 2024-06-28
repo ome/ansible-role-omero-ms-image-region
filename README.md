@@ -52,6 +52,7 @@ Example Playbook
 Another example:
 ----------------
 The following example is used to deploy in multiple nodes and configure the ms download url and other roles variables 
+For example, it can be used to deploy the microservice on the idr omeroreadonly servers. The variable values inside the playbook should be modified for the idr environment in which the ms will be deployemnt
 
     - hosts: nodes
       become: true
