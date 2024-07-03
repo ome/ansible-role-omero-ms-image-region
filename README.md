@@ -29,7 +29,7 @@ Role Variables
 - `omero_ms_image_region_worker_pool_size`: Number of microservice workers, the default is double the number of available processors
 - `session_id`: The OMERO session identifier, if you do not know it, you may get it using this command:
 
-   /opt/omero/web/OMERO.web/bin/omero config get omero.web.session_cookie_name
+      /opt/omero/web/OMERO.web/bin/omero config get omero.web.session_cookie_name
 
 - `omero_ms_image_region_max_active_channels`: The maximum number of channels to allow per request, the default is `10`
 - `omero_ms_image_region_update_nginx`: if set to `false`, it will not update the NGINX configuration file
@@ -37,7 +37,7 @@ Role Variables
 - omero_ms_image_region_package_sha256: The sha256 for the distributed microservice build
 
 
-The microservice build must compatible with the installed OMERO.server:
+The microservice build **must be compatible** with the installed OMERO.server:
 - The Bio-Formats version used in the microservice must match the Bio-Formats version of the OMERO.server.
 - Also, in the case of using NGFF data, the version of OMEZarrReader should be the same for both the Microsevice and the OMERO.server.
 
@@ -51,8 +51,8 @@ Example Playbook
 
 Another example:
 ----------------
-The following example is used to deploy in multiple nodes and configure the ms download url and other roles variables 
-For example, it can be used to deploy the microservice on the idr omeroreadonly servers. The variable values inside the playbook should be modified for the idr environment in which the ms will be deployemnt
+The following example is used to deploy in multiple nodes and configure the microservice download url and other roles variables 
+For example, it can be used to deploy the microservice on the IDR omeroreadonly servers. The variable values inside the playbook should be modified for the IDR environment in which the microservice will be deployed.
 
     - hosts: nodes
       become: true
