@@ -66,10 +66,12 @@ For example, it can be used to deploy the microservice on the IDR omeroreadonly 
           omero_ms_image_region_db_pass: database_password
           omero_data_dir: /data/OMERO
           omero_ms_image_region_session_id: sessionid
-          # URL for the Latest build which support bio-format 7.3 and and latest zar reader (i.e. 0.5.1)  
-          omero_ms_image_region_download_URL: 'https://github.com/khaledk2/ice-archh-64/releases/download/New_M/omero-ms-image-region-0.8.7.zip' 
+          # URL pointing to the micro service omero-ms-region-download
+          # It is important to have a version of the micro service using a version of Bio-Formats and OMEZarrReader than
+          # match the versions running on the server
+          omero_ms_image_region_download_URL: 'https://github.com/ome/omero-ms-image-region/releases/download/2024.07.15/omero-ms-image-region-0.10.0_b16.zip' 
           # sha256 for the Latest build
-          omero_ms_image_region_package_sha256: 2ce62fb6c5ff3f75bcc72d7a068d2c0b3667eb8787989f86eba045f958bab780
+          omero_ms_image_region_package_sha256: 77bd3df2241c2beb439001fb00bfd8b207a06de63b8ee78c7170916d6dde963e
 
 
 Author Information
