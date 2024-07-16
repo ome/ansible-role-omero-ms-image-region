@@ -46,7 +46,7 @@ omero_ms_image_region_update_nginx: false
 
 # Microservice download URL should be updated to match Bio-Formats versions of the Microservice and OMERO.server.
 #Also, the OMEZarrReader (if NGFF is used) versions of the Microservice and OMERO.server must match.
-omero_ms_image_region_download_URL: 'https://github.com/jburel/omero-ms-image-region/releases/download/2024.07.16/omero-ms-image-region-0.10.0.zip'
+omero_ms_image_region_download_URL: 'https://github.com/ome/omero-ms-image-region/releases/download/2024.07.16/omero-ms-image-region-0.10.0.zip'
 
 omero_ms_image_region_package_sha256: 529ebc9e21f8d432d5f142bfc23998a1623ac8466eeda7d17379a58258b53b21
 
