@@ -13,8 +13,8 @@
         password: omero
         databases: [ omero ]
 
-  - role: ome.java:
-      java_versions: 11
+  - role: ome.java
+    java_versions: 11
 
   - role: ome.omero_server
     omero_server_release: 5.6.10
