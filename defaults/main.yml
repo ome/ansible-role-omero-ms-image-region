@@ -44,11 +44,22 @@ omero_ms_image_region_session_id: 'sessionid'
 # Controls updating of the nginx config file (omero-web.conf). If False, the file does not get update
 omero_ms_image_region_update_nginx: false
 
-# Microservice download URL should be updated to match Bio-Formats versions of the Microservice and OMERO.server.
-#Also, the OMEZarrReader (if NGFF is used) versions of the Microservice and OMERO.server must match.
-omero_ms_image_region_download_URL: 'https://github.com/ome/omero-ms-image-region/releases/download/2024.07.16/omero-ms-image-region-0.10.0.zip'
+java_version: 11
 
-omero_ms_image_region_package_sha256: 1a5edd6f77a37e18712c72130e5549ea02fa3c5db34f72d3955235d1d348d198
+all_omero_ms_image_region_download_URL:
+   11:
+     url: "https://github.com/jburel/omero-ms-image-region/releases/download/2024.07.17/omero-ms-image-region-0.10.0_11.zip"
+     sha256: dbfcd3e06e81c7c75aa2689aadd74e61d06e09210dc1a3535ec8d94d366994e8
+   17:
+     url: "https://github.com/jburel/omero-ms-image-region/releases/download/2024.07.17/omero-ms-image-region-0.10.0_17.zip"
+     sha256: 26714bf49ef6c551ddd96649202ad9908b0e6ab87152bfa6a488f30e92f32c16
+   21:
+     url: "https://github.com/jburel/omero-ms-image-region/releases/download/2024.07.17/omero-ms-image-region-0.10.0_21.zip"
+     sha256: 042fe0a8c36cd928e4bfe8614eb28f7462f3bb1498a51d7cb3f5cda4882116c2
+
+omero_ms_image_region_download_URL: "{{ all_omero_ms_image_region_download_URL[java_version]['url'] }}"
+omero_ms_image_region_package_sha256: "{{ all_omero_ms_image_region_download_URL[java_version]['sha256'] }}"
+
 
 omero_ms_image_region_name: "{{ omero_ms_image_region_download_URL | basename }}"
 

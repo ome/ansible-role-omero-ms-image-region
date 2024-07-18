@@ -16,7 +16,7 @@
     deploy_archive_sha256: "{{ omero_ms_image_region_package_sha256 }}"
     deploy_archive_symlink: "{{ omero_ms_image_region_folder }}/omero-ms-image-region"
     deploy_archive_internal_root: >-
-      {{ omero_ms_image_region_name | splitext | first }}
+        {{ omero_ms_image_region_name | splitext | first | replace(java_version,'') | replace('_','') }}
 
 - name: omero-ms-image-region | chown to ms-user
   become: true
