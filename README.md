@@ -34,8 +34,8 @@ Role Variables
 - `omero_ms_image_region_max_active_channels`: The maximum number of channels to allow per request, the default is `10`
 - `omero_ms_image_region_update_nginx`: if set to `false`, it will not update the NGINX configuration file
 - `omero_ms_image_region_download_URL`: The download URL for the distributed microservice build (zip file)
-- omero_ms_image_region_package_sha256: The sha256 for the distributed microservice build
-
+- `omero_ms_image_region_package_sha256`: The sha256 for the distributed microservice build
+- `java_version`: The Java version matching the server version. Supported versions are 11, 17 and 21
 
 The microservice build **must be compatible** with the installed OMERO.server:
 - The Bio-Formats version used in the microservice must match the Bio-Formats version of the OMERO.server.
