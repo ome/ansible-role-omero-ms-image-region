@@ -35,6 +35,9 @@
   ansible.builtin.template:
     dest: "{{ omero_ms_image_region_folder }}/omero-ms-image-region/conf/config.yaml"
     src: config.yaml.j2
+  notify:
+    - enable omero-ms-image-region service
+    - restart omero-ms-image-region service
 
 - name: omero-ms-image-region | copy log config file
   become: true
@@ -42,18 +45,12 @@
     dest: "{{ omero_ms_image_region_folder }}/omero-ms-image-region/conf/logback.xml"
     src: logback.xml.j2
 
+
 - name: omero-ms-image-region | copy run.sh
   become: true
   ansible.builtin.template:
     dest: "{{ omero_ms_image_region_folder }}/omero-ms-image-region/run.sh"
     src: run.sh.j2
-    mode: +x
-
-- name: omero-ms-image-region | copy stop.sh
-  become: true
-  ansible.builtin.template:
-    dest: "{{ omero_ms_image_region_folder }}/omero-ms-image-region/stop.sh"
-    src: stop.sh.j2
     mode: +x
 
 - name: omero-ms-image-region | copy systemd service
