@@ -67,7 +67,7 @@ For example, it can be used to deploy the microservice on the IDR omeroreadonly 
           omero_data_dir: /data/OMERO
           omero_ms_image_region_session_id: sessionid
           # URL pointing to the micro service omero-ms-region-download
-          # It is important to have a version of the micro service using a version of Bio-Formats and OMEZarrReader than
+          # It is important to have a version of the micro service using a version of Bio-Formats and OMEZarrReader that
           # match the versions running on the server
           omero_ms_image_region_download_URL: 'https://github.com/ome/omero-ms-image-region/releases/download/2024.07.15/omero-ms-image-region-0.10.0_b16.zip' 
           # sha256 for the Latest build
