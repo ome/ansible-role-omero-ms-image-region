@@ -4,12 +4,11 @@ Requires=redis.service
 After=network.service
 
 [Service]
-USER=omero-server
+User=omero-server
 UMask=0002
 Type=simple
 WorkingDirectory={{ omero_ms_image_region_folder }}/omero-ms-image-region
-ExecStart={{ omero_ms_image_region_folder }}/omero-ms-image-region/run.sh
-ExecStop={{ omero_ms_image_region_folder }}/omero-ms-image-region/stop.sh
+ExecStart=/bin/bash {{ omero_ms_image_region_folder }}/omero-ms-image-region/run.sh
 Restart=always
 RestartSec=3
 
