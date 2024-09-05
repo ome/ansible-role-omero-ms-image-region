@@ -51,7 +51,7 @@ Example Playbook
 
 Another example:
 ----------------
-The following example is used to deploy in multiple nodes and configure the microservice download url and other roles variables 
+The following example is used to deploy in multiple nodes and configure the microservice download url and other roles variables. 
 For example, it can be used to deploy the microservice on the IDR omeroreadonly servers. The variable values inside the playbook should be modified for the IDR environment in which the microservice will be deployed.
 
     - hosts: nodes
