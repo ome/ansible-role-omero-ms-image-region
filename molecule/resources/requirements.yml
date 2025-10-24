@@ -1,5 +1,25 @@
 ---
-- src: ome.omero_server
-- src: ome.postgresql
-- src: ome.omero_web
-- src: ome.java
+# - src: ome.omero_server
+- name: omero_server
+  src: https://github.com/pwalczysko/ansible-role-omero-server
+  version: pythonvers-symlink-in-virtualenvrole
+
+# - src: ome.postgresql
+- name: postgresql
+  src: https://github.com/pwalczysko/ansible-role-postgresql
+  version: p312
+
+# - src: ome.omero_web
+- name: omero_web
+  src: https://github.com/pwalczysko/ansible-role-omero-web
+  version: p312
+
+# - src: ome.java
+- name: java
+  src: https://github.com/khaledk2/ansible-role-java
+  version: update_ansible
+
+# To be removed once redis role is released
+- name: redis
+  src: https://github.com/khaledk2/ansible-role-redis
+  version: update_Ansible
