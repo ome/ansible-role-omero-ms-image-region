@@ -23,3 +23,8 @@
 - name: redis
   src: https://github.com/khaledk2/ansible-role-redis
   version: update_Ansible
+
+# - src: ome.deploy_archive
+- name: deploy_archive
+  src: https://github.com/pwalczysko/ansible-role-deploy-archive
+  version: update-framework
