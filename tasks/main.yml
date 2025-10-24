@@ -22,13 +22,13 @@
   ansible.builtin.set_fact:
     omero_ms_image_region_ms_redis_uri:
       "redis://:@{{ omero_ms_image_region_redis_url }}:{{ omero_ms_image_region_redis_port }}/0"
-  when: not omero_ms_image_region_redis_pass
+  when: not (omero_ms_image_region_redis_pass | length > 0)
 
 - name: omero-ms-image-region | set redis uri in not protected mode
   ansible.builtin.set_fact:
     omero_ms_image_region_ms_redis_uri:
       "redis://:{{ omero_ms_image_region_redis_pass }}@{{ omero_ms_image_region_redis_url }}:{{ omero_ms_image_region_redis_port }}/0"
-  when: omero_ms_image_region_redis_pass
+  when: omero_ms_image_region_redis_pass | length > 0
 
 - name: omero-ms-image-region | copy config file
   become: true
