@@ -76,5 +76,5 @@
     - restart omero-ms-image-region service
   when: ansible_facts.selinux.status == 'enabled'
 
-- ansible.builtin.import_tasks: update_nginx_config.yml
+- ansible.builtin.include_tasks: update_nginx_config.yml
   when: omero_ms_image_region_update_nginx
