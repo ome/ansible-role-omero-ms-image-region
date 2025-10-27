@@ -14,7 +14,7 @@
     checksum_algorithm: sha256
   register: stat_ssh256
 
-- ansible.builtin.import_tasks: pre_tasks.yml
+- ansible.builtin.include_tasks: pre_tasks.yml
   when:
    - stat_ssh256.stat.checksum is undefined or omero_ms_image_region_package_sha256 !=  stat_ssh256.stat.checksum
 
