@@ -48,14 +48,14 @@ java_version: 11
 
 all_omero_ms_image_region_download_URL:
    11:
-     url: "https://github.com/ome/omero-ms-image-region/releases/download/2024.08.13/omero-ms-image-region-0.10.0_11.zip"
-     sha256: f45fb83cf55b4c87bb15b58a5c314ebd355d59cab9225d1bb598130d32fb86d9
+     url: "https://github.com/ome/omero-ms-image-region/releases/download/v2025.11.05/omero-ms-image-region-0.10.0_11.zip"
+     sha256: 9cd4a2f55a28dfc3ef249ed51faf52aae39caaec10081760031c9024638735ed
    17:
-     url: "https://github.com/ome/omero-ms-image-region/releases/download/2024.08.13/omero-ms-image-region-0.10.0_17.zip"
-     sha256: 694114e67dfe20f5d03803591e37e20e9835b3247d26bcc3534876711ec3a4a9
+     url: "https://github.com/ome/omero-ms-image-region/releases/download/v2025.11.05/omero-ms-image-region-0.10.0_17.zip"
+     sha256: e9cff79db1c01841f63eec65bb8689f3cb9d67c3f4ada0b1c1f265edfbcdcbb3
    21:
-     url: "https://github.com/ome/omero-ms-image-region/releases/download/2024.08.13/omero-ms-image-region-0.10.0_21.zip"
-     sha256: 9f80c421ae6a746a8bf1199b65425e0616d539b26979a41220056d9e10bf7723
+     url: "https://github.com/ome/omero-ms-image-region/releases/download/v2025.11.05/omero-ms-image-region-0.10.0_21.zip"
+     sha256: 128c1d27059c748a828908d60619814ace65376bc3040b5d8146154579a13003
 
 omero_ms_image_region_download_URL: "{{ all_omero_ms_image_region_download_URL[java_version]['url'] }}"
 omero_ms_image_region_package_sha256: "{{ all_omero_ms_image_region_download_URL[java_version]['sha256'] }}"
