@@ -15,7 +15,7 @@
 
 - name: omero-ms-image-region | download omero-ms-image-region
   ansible.builtin.include_role:
-      name: deploy_archive
+      name: ome.deploy_archive
   vars:
     deploy_archive_dest_dir: "{{ omero_ms_image_region_folder }}"
     deploy_archive_src_url: "{{ omero_ms_image_region_download_URL }}"
