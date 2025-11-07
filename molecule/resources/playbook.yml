@@ -2,8 +2,8 @@
 - name: Converge
   hosts: all
   roles:
-  - role: redis
-  - role: postgresql
+  - role: ome.redis
+  - role: ome.postgresql
     postgresql_version: "14"
     postgresql_databases:
         - name: omero
@@ -13,7 +13,7 @@
         password: omero
         databases: [ omero ]
 
-  - role: java
+  - role: ome.java
     java_versions: 11
 
   - role: omero_server
