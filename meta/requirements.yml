@@ -1,6 +1,3 @@
 ---
 
-# - src: ome.deploy_archive
-  - name: deploy_archive
-    src: https://github.com/pwalczysko/ansible-role-deploy-archive
-    version: update-framework
+- src: ome.deploy_archive
