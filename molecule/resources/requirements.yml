@@ -1,16 +1,7 @@
 ---
-# - src: ome.omero_server
-- name: omero_server
-  src: https://github.com/pwalczysko/ansible-role-omero-server
-  version: pythonvers-symlink-in-virtualenvrole
 
+- src: ome.omero_server
 - src: ome.postgresql
-
-# - src: ome.omero_web
-- name: omero_web
-  src: https://github.com/pwalczysko/ansible-role-omero-web
-  version: p312
-
+- src: ome.omero_web
 - src: ome.java
-
 - src: ome.deploy_archive

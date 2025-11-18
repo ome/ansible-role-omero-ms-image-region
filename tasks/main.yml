@@ -67,7 +67,7 @@
   become: true
   ignore_errors: true
 
-  ansible.builtin.seport:
+  community.general.seport:
     ports: "{{ omero_ms_image_region_port }}"
     proto: tcp
     setype: http_port_t
