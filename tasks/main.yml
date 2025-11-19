@@ -14,7 +14,7 @@
     checksum_algorithm: sha256
   register: stat_ssh256
 
-- import_tasks: pre_tasks.yml
+- ansible.builtin.include_tasks: pre_tasks.yml
   when:
    - stat_ssh256.stat.checksum is undefined or omero_ms_image_region_package_sha256 !=  stat_ssh256.stat.checksum
 
@@ -22,13 +22,13 @@
   ansible.builtin.set_fact:
     omero_ms_image_region_ms_redis_uri:
       "redis://:@{{ omero_ms_image_region_redis_url }}:{{ omero_ms_image_region_redis_port }}/0"
-  when: not omero_ms_image_region_redis_pass
+  when: not (omero_ms_image_region_redis_pass | length > 0)
 
 - name: omero-ms-image-region | set redis uri in not protected mode
   ansible.builtin.set_fact:
     omero_ms_image_region_ms_redis_uri:
       "redis://:{{ omero_ms_image_region_redis_pass }}@{{ omero_ms_image_region_redis_url }}:{{ omero_ms_image_region_redis_port }}/0"
-  when: omero_ms_image_region_redis_pass
+  when: omero_ms_image_region_redis_pass | length > 0
 
 - name: omero-ms-image-region | copy config file
   become: true
@@ -67,7 +67,7 @@
   become: true
   ignore_errors: true
 
-  ansible.builtin.seport:
+  community.general.seport:
     ports: "{{ omero_ms_image_region_port }}"
     proto: tcp
     setype: http_port_t
@@ -76,5 +76,5 @@
     - restart omero-ms-image-region service
   when: ansible_facts.selinux.status == 'enabled'
 
-- import_tasks: update_nginx_config.yml
+- ansible.builtin.include_tasks: update_nginx_config.yml
   when: omero_ms_image_region_update_nginx

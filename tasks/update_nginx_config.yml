@@ -8,7 +8,7 @@
 
 
 - name: display file contents
-  debug:
+  ansible.builtin.debug:
     var: nginx_contents['content'] | b64decode | regex_replace('}$', '')
 
 - name: omero-ms-image-region | copy omero-web config file
