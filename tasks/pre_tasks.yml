@@ -29,7 +29,7 @@
   ansible.builtin.file:
     path: "{{ omero_ms_image_region_folder }}"
     owner: "{{ omero_ms_image_region_user }}"
-    group: "{{ omero_ms_image_region_group or omero_ms_image_region_user }}"
+    group: "{{ omero_ms_image_region_group }}"
     state: directory
     recurse: true
     mode: 0755

@@ -4,6 +4,9 @@
 # Microservice user, the defaults is OMERO.server
 omero_ms_image_region_user: 'omero-server'
 
+# Microservice group, default is same as user:
+omero_ms_image_region_group: "{{ omero_ms_image_region_user }}"
+
 # Microservice installation folder
 omero_ms_image_region_folder: '/opt/omero/microservice'
 
