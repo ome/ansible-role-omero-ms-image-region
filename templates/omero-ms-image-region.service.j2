@@ -4,7 +4,7 @@ Requires=redis.service
 After=network.service
 
 [Service]
-User=omero-server
+User="{{ omero_ms_image_region_user }}"
 UMask=0002
 Type=simple
 WorkingDirectory={{ omero_ms_image_region_folder }}/omero-ms-image-region
