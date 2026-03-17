@@ -16,6 +16,7 @@ Role Variables
 --------------
 
 - `omero_ms_image_region_user`: The microservice user, the default is `omero-server`
+- `omero_ms_image_region_group`: The microservice group, the default is `omero-server` (the same as the value of `omero_ms_image_region_user`)
 - `omero_ms_image_region_folder`: The microservice installation folder
 - `omero_ms_image_region_port`: The microservice port 
 - `omero_ms_image_region_db_url`: The OMERO database URL
